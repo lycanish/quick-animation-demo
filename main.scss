@@ -1,0 +1,119 @@
+
+// it's the same as css, just has nesting. Plus a lot of other over
+// complicated shit that really just complicates things... but this
+// should help. Also variables...
+
+$imageWidth: 100px;
+$heightOfContainer: 80vh;
+
+body{
+  background: #333;
+  h1{
+    color: #ccc;
+  }
+  h1.specific{
+    color: #aaa;
+  }
+}
+
+// This sets up the box that contains the elements.
+
+.js, .css{
+  display: flex;
+  flex-wrap: wrap;
+  max-height: $heightOfContainer;
+  overflow: hidden;
+  figure{
+    position: relative;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    padding: 0;
+    flex: auto;
+    margin: 0;
+    display: block;
+    min-height: $imageWidth;
+    min-width: $imageWidth;
+    background-size: contain;
+    background-repeat: none;
+    background-position: center;
+  }
+}
+
+// this puts in the images per division. so if there's the order of 5 `5n` the add `+1` to the start
+// or whatever. I don't fucking know.
+
+.js figure{
+  &:nth-child(5n){
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=js1&w=100&h=100');
+    border: 1px solid green;
+  }
+  &:nth-child(5n+1){
+    border: 1px solid blue;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=js2&w=100&h=100');
+  }
+  &:nth-child(5n+2){
+    border: 1px solid red;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=js3&w=100&h=100');
+  }
+  &:nth-child(5n+3){
+    border: 1px solid yellow;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=js4&w=100&h=100');
+  }
+  &:nth-child(5n+4){
+    border: 1px solid cornflowerblue;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=js5&w=100&h=100');
+  }
+}
+
+.css figure{
+  &:nth-child(5n){
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=css1&w=100&h=100');
+    border: 1px solid green;
+  }
+  &:nth-child(5n+1){
+    border: 1px solid blue;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=css2&w=100&h=100');
+  }
+  &:nth-child(5n+2){
+    border: 1px solid red;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=css3&w=100&h=100');
+  }
+  &:nth-child(5n+3){
+    border: 1px solid yellow;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=css4&w=100&h=100');
+  }
+  &:nth-child(5n+4){
+    border: 1px solid cornflowerblue;
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=css5&w=100&h=100');
+  }
+}
+
+
+// here's an example on how you would do css
+
+.css figure{
+  // set the initial animation point & the transition
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+  opacity: 1;
+  top: 0;
+
+  //roll out animation
+  transition-timing-function:ease;
+  transition-property: top, opacity;
+  transition-duration: 2s;
+
+  // add the css action
+  &:hover{
+
+    // animate to transistion
+    opacity: .5;
+    top: 10px;
+
+    //animate roll in properties
+    transition-timing-function:linear;
+    transition-property: top, opacity;
+    transition-duration: .1s;
+  }
+}
